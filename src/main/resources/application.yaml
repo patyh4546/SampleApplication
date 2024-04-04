@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/UserDetails
+    username: postgres
+    password: user
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+  application:
+    name: UserInfoMapper
+  main:
+    allow-circular-references: true
+  security:
+    enable-csrf: false
+server:
+  error:
+    include-message: always

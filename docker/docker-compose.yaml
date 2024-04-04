@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  spring-app:
+    build:
+      context: ..
+      dockerfile: spring.dockerfile
+    container_name: spring-rest-api
+    restart: always
+    ports:
+      - '8080:8080'
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/UserDetails
+    depends_on:
+      - postgres-db
+  postgres-db:
+    build: ./postgres/
+    container_name: postgres-db
+    restart: always
+    env_file:
+      - config/db.env
+    ports:
+      - "5432:5432"
